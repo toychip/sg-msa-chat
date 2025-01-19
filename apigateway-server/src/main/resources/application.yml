@@ -11,10 +11,16 @@ eureka:
 spring:
   application:
     name: apigateway-server
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: user-service
-#          uri: lb://USER-SERVICE
-#          predicates:
-#            - Path=/user-service/**
+  cloud:
+    gateway:
+      routes:
+        - id: chat-server
+          uri: lb://CHAT-SERVER
+          predicates:
+            - Path=/chat/**
+
+      default-filters:
+        - AuthorizationHeaderFilter
+jwt:
+  secret:
+    key: J4uEieF9SiI2Y++yxKDMED4fyTUcpTWg7xpJ9pyzHZUGA6VlbVAlaNjG+X7hjWeHLfiiRWndh1c8oM/RGpaLDg==
